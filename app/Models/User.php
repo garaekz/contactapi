@@ -67,8 +67,8 @@ class User extends Authenticatable
         ];
     }
 
-    public function clients(): HasMany
+    public function forms(): HasMany
     {
-        return $this->hasMany(Client::class);
+        return $this->hasMany(Form::class);
     }
 }
