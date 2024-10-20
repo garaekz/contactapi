@@ -10,14 +10,13 @@ it('only allows submissions from forms with api key and correct ability', functi
     $this->postJson(route('api.forms.store'), [
         'data' => [
             'name' => 'John Doe',
-            'email' => 'test@test.io',
         ],
     ])->assertForbidden();
 
     Sanctum::actingAs($form, ['submit']);
 
     $this->postJson(route('api.forms.store'), [
-        'fields' => [
+        'data' => [
             'name' => 'John Doe',
         ],
     ])->assertOk();

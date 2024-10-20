@@ -10,7 +10,7 @@ Route::get('/user', function (Request $request) {
 
 Route::group([
     'middleware' => ['auth:sanctum', 'abilities:submit'],
-    'prefix' => 'api',
+    'prefix' => 'v1',
     'as' => 'api.',
 ], function () {
     Route::post('/forms', [SubmissionController::class, 'store'])->name('forms.store');
