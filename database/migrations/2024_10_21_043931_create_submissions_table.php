@@ -1,6 +1,7 @@
 <?php
 
-use App\Models\User;
+use App\Models\Form;
+use App\Models\FormTemplate;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,12 +13,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('forms', function (Blueprint $table) {
+        Schema::create('submissions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->ulid()->index();
-            $table->unsignedInteger('submissions_count')->default(0);
-            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Form::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(FormTemplate::class)->constrained()->cascadeOnDelete();
+            $table->json('data');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('forms');
+        Schema::dropIfExists('submissions');
     }
 };
