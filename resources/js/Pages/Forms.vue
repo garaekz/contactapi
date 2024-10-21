@@ -1,13 +1,9 @@
-<script setup>
+<script setup lang="ts">
 import AppLayout from '@/Layouts/AppLayout.vue';
 
-
-defineProps({
-    'forms': {
-        type: Object,
-        required: true
-    }
-})
+defineProps<{
+    forms: PaginatedResponse<Form>;
+}>();
 </script>
 
 <template>
