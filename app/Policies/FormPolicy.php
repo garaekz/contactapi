@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Form;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class FormPolicy
 {
@@ -13,7 +12,7 @@ class FormPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
