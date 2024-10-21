@@ -19,5 +19,10 @@ it('only allows submissions from forms with api key and correct ability', functi
         'data' => [
             'name' => 'John Doe',
         ],
-    ])->assertOk();
+    ])->assertCreated();
+
+    $this->assertDatabaseHas('forms', [
+        'id' => $form->id,
+        'submissions_count' => 1,
+    ]);
 });

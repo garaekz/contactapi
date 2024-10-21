@@ -35,6 +35,7 @@ class SubmissionController extends Controller
     {
         $template = $templateAction->execute($request->data);
         $sub = Submission::create(['form_id' => auth()->id(), 'form_template_id' => $template->id, 'data' => $request->data]);
+        auth()->user()->increment('submissions_count');
 
         return new SubmissionResource($sub);
     }
