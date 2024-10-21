@@ -13,7 +13,9 @@ class FormController extends Controller
      */
     public function index()
     {
-        //
+        return inertia('Forms', [
+            'forms' => Form::all(),
+        ]);
     }
 
     /**
