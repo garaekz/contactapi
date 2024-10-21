@@ -4,28 +4,6 @@ interface Link {
     active: boolean;
 }
 
-interface Meta {
-    current_page: number;
-    from: number | null;
-    last_page: number;
-    links: Link[];
-    path: string;
-    per_page: number;
-    to: number | null;
-    total: number;
-}
-
-interface PaginatedResponse<T> {
-    data: T[];
-    links: {
-        first: string;
-        last: string;
-        prev: string | null;
-        next: string | null;
-    };
-    meta: Meta;
-}
-
 interface Pagination<T> {
     current_page: number;
     data: T[];
@@ -33,6 +11,7 @@ interface Pagination<T> {
     from: number;
     last_page: number;
     last_page_url: string;
+    links: Link[];
     next_page_url: string | null;
     path: string;
     per_page: number;
@@ -42,6 +21,12 @@ interface Pagination<T> {
 }
 
 interface Form {
-    ulid: string;
+    id: number;
     name: string;
+    ulid: string;
+    submissions_count: number;
+    user_id: number;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
 }

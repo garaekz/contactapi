@@ -23,5 +23,7 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::apiResource('forms', FormController::class);
+    Route::apiResource('forms', FormController::class)->parameters([
+        'forms' => 'form:ulid',
+    ]);
 });

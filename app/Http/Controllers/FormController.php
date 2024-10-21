@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreFormRequest;
 use App\Http\Requests\UpdateFormRequest;
-use App\Http\Resources\FormResource;
 use App\Models\Form;
 
 class FormController extends Controller
@@ -14,8 +13,8 @@ class FormController extends Controller
      */
     public function index()
     {
-        return inertia('Forms', [
-            'forms' => FormResource::collection(Form::whereUserId(auth()->id())->paginate()),
+        return inertia('Form/IndexPage', [
+            'forms' => Form::whereUserId(auth()->id())->paginate(),
         ]);
     }
 
@@ -40,7 +39,9 @@ class FormController extends Controller
      */
     public function show(Form $form)
     {
-        //
+        return inertia('Form/ShowPage', [
+            'submissions' => $form->submissions()->paginate(),
+        ]);
     }
 
     /**
